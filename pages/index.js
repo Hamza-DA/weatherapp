@@ -24,9 +24,7 @@ export default function Home() {
   }, []);
   const getRes = ({ lat, lon }) => {
     axios
-      .get(
-        `http://localhost:3000/api/onecall?lat=${lat}&lon=${lon}&units=metric`
-      )
+      .get(`/api/onecall?lat=${lat}&lon=${lon}&units=metric`)
       .then((res) => {
         // console.log(res);
         setRes(res.data);

@@ -2,7 +2,7 @@
   "name": "weather-app",
   "private": true,
   "scripts": {
-    "dev": "node server.js",
+    "dev": "nodemon server.js",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

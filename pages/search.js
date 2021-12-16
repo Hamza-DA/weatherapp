@@ -11,10 +11,11 @@ export default function Search() {
   useEffect(() => {
     localStorage.getItem('searchHistory') !== null && onCall();
   }, []);
+
   const getRes = (prop) => {
     if (prop !== '') {
       axios
-        .get(`http://localhost:3000/api/weather?q=${prop}`)
+        .get(`/api/weather?q=${prop}`)
         .then((res) => {
           if (res.data.cod == 404) {
             alert('City not found');
@@ -39,9 +40,7 @@ export default function Search() {
   const onCall = () => {
     JSON.parse(localStorage.getItem('searchHistory')).map((e, i) => {
       axios
-        .get(
-          `http://localhost:3000/api/onecall?lat=${e[0].lat}&lon=${e[0].lon}&units=metric`
-        )
+        .get(`/api/onecall?lat=${e[0].lat}&lon=${e[0].lon}&units=metric`)
         .then((res) => {
           setonCallRes([...onCallRes, [...e, res.data]]);
         })

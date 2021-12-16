@@ -34,27 +34,25 @@ export const DailyForecast = ({ arr }) => {
     <>
       <div className='mt-16 w-full'>
         {arr.slice(0, 7).map((e, i) => (
-          <>
-            <div
-              key={i}
-              className='w-full flex items-center justify-between mb-8 relative'
-            >
-              <h6 className='text-xl'>
-                <UnixDays time={e.dt} />
-              </h6>
-              <div className='flex flex-row items-center w-20 absolute left-1/2 -translate-x-1/2'>
-                <p className='font-regular opacity-70 text-lg'>
-                  {e.weather[0].main}
-                </p>
-                <img
-                  src={`http://openweathermap.org/img/wn/${e.weather[0].icon}.png`}
-                  alt='image'
-                  className='w-8 h-auto'
-                />
-              </div>
-              <MinMax min={e.temp.min} max={e.temp.max} />
+          <div
+            key={i}
+            className='w-full flex items-center justify-between mb-8 relative'
+          >
+            <h6 className='text-xl'>
+              <UnixDays time={e.dt} />
+            </h6>
+            <div className='flex flex-row items-center w-20 absolute left-1/2 -translate-x-1/2'>
+              <p className='font-regular opacity-70 text-lg'>
+                {e.weather[0].main}
+              </p>
+              <img
+                src={`http://openweathermap.org/img/wn/${e.weather[0].icon}.png`}
+                alt='image'
+                className='w-8 h-auto'
+              />
             </div>
-          </>
+            <MinMax min={e.temp.min} max={e.temp.max} />
+          </div>
         ))}
       </div>
     </>

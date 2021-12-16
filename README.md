@@ -1,5 +1,4 @@
-![weather app](public/logo.jpg)
-
+<img src="public/logo.jpg" alt='weather app logo' width="100%"/>
 You could just use some HTML in your Markdown:
 
 <img src="public/favicon.jpg" alt='weather app logo' width="20"/>

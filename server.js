@@ -8,14 +8,20 @@ const handle = app.getRequestHandler();
 
 const needle = require('needle');
 const url = require('url');
+const cors = require('cors');
 
 app.prepare().then(() => {
   const API_BASE_URL = process.env.API_BASE_URL;
   const API_KEY_NAME = process.env.API_KEY_NAME;
   const API_KEY_VALUE = process.env.API_KEY_VALUE;
+  const APP_BASE_URL = process.env.APP_BASE_URL;
 
   const server = express();
-
+  server.use(
+    cors({
+      origin: APP_BASE_URL,
+    })
+  );
   server.get('/api/:stat', async (req, res) => {
     try {
       const params = new URLSearchParams({
@@ -28,6 +34,7 @@ app.prepare().then(() => {
         `${API_BASE_URL}/${req.params.stat}?${params}`
       );
       const data = apiRes.body;
+      console.log(process.env.APP_BASE_URL);
       res.status(200).json(data);
     } catch (error) {
       res.status(500).json({ error });
