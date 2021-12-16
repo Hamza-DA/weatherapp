@@ -1,10 +1,9 @@
-import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import NavBar from '../components/NavBar';
-import { ArrowUpIcon, CloudIcon } from '@heroicons/react/outline';
+import { ArrowUpIcon } from '@heroicons/react/outline';
 import { CurrentWeather } from '../components/CurrentWeather';
-import { KelvinToCelcius, UnixDate } from '../components/ConvertTool';
+import { UnixDate } from '../components/ConvertTool';
 import { MinMax } from '../components/MinMax';
 import { HourlyForecast, DailyForecast } from '../components/Forecast';
 import Loader from '../components/Loader';
