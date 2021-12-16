@@ -4,6 +4,12 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
+        <title>Weather App</title>
+        <meta
+          name='description'
+          content='Weather App, created using express.js, nexts.js, openWeather API, tailwindCSS'
+        />
+        <link rel='icon' href='/favicon.ico' />
         <link rel='preconnect' href='https://fonts.googleapis.com' />
         <link rel='preconnect' href='https://fonts.gstatic.com' crossOrigin />
         <link

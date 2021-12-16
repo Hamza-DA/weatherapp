@@ -12,12 +12,12 @@ class myDoc extends Document {
               href='https://fonts.gstatic.com'
               crossOrigin
             />
-            <link
+            {/* <link
               href='https://fonts.googleapis.com/css2?family=Outfit:wght@100;300;400;500;700;800&display=swap'
               rel='stylesheet'
-            />
+            /> */}
           </Head>
-          <body>
+          <body className='blue-bg bg-no-repeat min-h-screen'>
             <Main />
             <NextScript />
           </body>
@@ -27,4 +27,4 @@ class myDoc extends Document {
   }
 }
 
-export default Document;
+export default myDoc;
