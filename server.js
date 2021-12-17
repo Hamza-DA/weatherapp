@@ -14,25 +14,16 @@ app.prepare().then(() => {
   const API_BASE_URL = process.env.API_BASE_URL;
   const API_KEY_NAME = process.env.API_KEY_NAME;
   const API_KEY_VALUE = process.env.API_KEY_VALUE;
-  const APP_BASE_URL = process.env.APP_BASE_URL;
 
   const server = express();
+
   server.use(
     cors({
       origin: '*',
     })
   );
-  // server.use(
-  // cors({
-  //   origin: 'https://google.com',
-  // })
-  // );
-  // app.use(
-  //   cors({
-  //     origin: APP_BASE_URL,
-  //   })
-  // );
 
+  server.use(express.static('public'));
   server.get(
     '/api/:stat',
 
@@ -58,6 +49,7 @@ app.prepare().then(() => {
   server.all('*', (req, res) => {
     return handle(req, res);
   });
+
   server.listen(port, (err) => {
     if (err) throw err;
     console.log(`> Ready on http://localhost:${port}`);

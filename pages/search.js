@@ -37,8 +37,10 @@ export default function Search() {
     //     (e) => e[1] !== props[1]
     //   )
     // );
-    const cities = [...(SearchHistory || ''), props];
-    setSearchHistory(cities);
+    const cities = [...(onCallRes || ''), props];
+    // const cities = [...(SearchHistory || ''), props];
+    setonCallRes(cities);
+    // setonCallRes(cities);
     localStorage.setItem('searchHistory', JSON.stringify(cities));
   };
   const onCall = () => {
@@ -51,6 +53,7 @@ export default function Search() {
         )
         .then((res) => {
           setonCallRes([...onCallRes, [...e, res.data]]);
+          // console.log([...onCallRes, [...e, res.data]]);
         })
         .catch((err) => alert(err));
     });
@@ -85,34 +88,39 @@ export default function Search() {
             />
           </button>
         </div>
-        {onCallRes.map((e, i) => (
-          <div
-            key={i}
-            className='bg-white bg-opacity-10 rounded-2xl py-3 px-5 mb-4'
-          >
-            <div className='flex items-start'>
-              <h2 className='text-8xl tracking-normal font-thin degree mr-12 relative'>
-                {Math.floor(e[3].current.temp)}
-              </h2>
-              <div className='flex flex-col items-start mt-2.5'>
-                <div className='flex -mb-1'>
-                  <p className='text-2xl mr-2'>
-                    {e[3].current.weather[0].main}
-                  </p>
-                  <img
-                    className='w-8 h-8'
-                    src={`http://openweathermap.org/img/wn/${e[3].current.weather[0].icon}.png`}
-                  />
+        {onCallRes.map(
+          (e, i) =>
+            e[3] !== undefined && (
+              <div
+                key={i}
+                className='bg-white bg-opacity-10 rounded-2xl py-3 px-5 mb-4'
+              >
+                <div className='flex items-start'>
+                  <h2 className='text-8xl tracking-normal font-thin degree mr-12 relative'>
+                    {Math.floor(e[3].current.temp)}
+                  </h2>
+                  <div className='flex flex-col items-start mt-2.5'>
+                    <div className='flex -mb-1'>
+                      <p className='text-2xl mr-2'>
+                        {e[3].current.weather[0].main}
+                      </p>
+                      <img
+                        className='w-8 h-8'
+                        src={`http://openweathermap.org/img/wn/${e[3].current.weather[0].icon}.png`}
+                      />
+                    </div>
+                    <span className='text-base opacity-50 font-normal'>
+                      {e[1]}
+                    </span>
+                    <MinMax
+                      min={e[3].daily[0].temp.min}
+                      max={e[3].daily[0].temp.max}
+                    />
+                  </div>
                 </div>
-                <span className='text-base opacity-50 font-normal'>{e[1]}</span>
-                <MinMax
-                  min={e[3].daily[0].temp.min}
-                  max={e[3].daily[0].temp.max}
-                />
               </div>
-            </div>
-          </div>
-        ))}
+            )
+        )}
       </div>
     </>
   );
