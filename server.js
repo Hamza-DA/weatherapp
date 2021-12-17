@@ -8,7 +8,7 @@ const handle = app.getRequestHandler();
 
 const needle = require('needle');
 const url = require('url');
-// const cors = require('cors');
+const cors = require('cors');
 
 app.prepare().then(() => {
   const API_BASE_URL = process.env.API_BASE_URL;
@@ -17,11 +17,11 @@ app.prepare().then(() => {
   const APP_BASE_URL = process.env.APP_BASE_URL;
 
   const server = express();
-  // server.use(
-  //   cors({
-  //     origin: APP_BASE_URL,
-  //   })
-  // );
+  server.use(
+    cors({
+      origin: APP_BASE_URL,
+    })
+  );
   server.get('/api/:stat', async (req, res) => {
     try {
       const params = new URLSearchParams({
