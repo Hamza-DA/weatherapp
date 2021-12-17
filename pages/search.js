@@ -15,7 +15,11 @@ export default function Search() {
   const getRes = (prop) => {
     if (prop !== '') {
       axios
-        .get(`/api/weather?q=${prop}`)
+        .get(
+          `${
+            typeof window !== 'undefined' && window.location.origin
+          }/api/weather?q=${prop}`
+        )
         .then((res) => {
           if (res.data.cod == 404) {
             alert('City not found');
@@ -40,7 +44,11 @@ export default function Search() {
   const onCall = () => {
     JSON.parse(localStorage.getItem('searchHistory')).map((e, i) => {
       axios
-        .get(`/api/onecall?lat=${e[0].lat}&lon=${e[0].lon}&units=metric`)
+        .get(
+          `${
+            typeof window !== 'undefined' && window.location.origin
+          }/api/onecall?lat=${e[0].lat}&lon=${e[0].lon}&units=metric`
+        )
         .then((res) => {
           setonCallRes([...onCallRes, [...e, res.data]]);
         })
