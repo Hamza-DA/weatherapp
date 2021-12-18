@@ -21,13 +21,7 @@ app.prepare().then(() => {
   server.use(cors());
 
   server.use(express.static('public'));
-  server.get('/:tst', (req, res) => {
-    const params = {
-      ...url.parse(req.url, true).slashes,
-      ...url.parse(req.url, true).query,
-    };
-    res.json({ success: true, params: params, parameter: req.params.tst });
-  });
+
   server.get(
     '/api/:stat',
 
