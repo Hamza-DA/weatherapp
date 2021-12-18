@@ -18,11 +18,7 @@ app.prepare().then(() => {
 
   const server = express();
 
-  server.use(
-    cors({
-      origin: '*',
-    })
-  );
+  server.use(cors());
 
   server.use(express.static('public'));
   server.get('/:tst', (req, res) => {

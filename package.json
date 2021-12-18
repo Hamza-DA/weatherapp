@@ -2,9 +2,9 @@
   "name": "weather-app",
   "private": true,
   "scripts": {
-    "dev": "nodemon server.js",
+    "dev": "node server.js",
     "build": "next build",
-    "start": "next start -p $PORT",
+    "start": "node server.js",
     "lint": "next lint"
   },
   "engines": {
