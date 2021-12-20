@@ -12,6 +12,8 @@ class myDoc extends Document {
               href='https://fonts.gstatic.com'
               crossOrigin
             />
+            <link rel='manifest' href='/manifest.json' />
+            <meta name='theme-color' content='#28468F' />
             {/* <link
               href='https://fonts.googleapis.com/css2?family=Outfit:wght@100;300;400;500;700;800&display=swap'
               rel='stylesheet'
