@@ -1,5 +1,4 @@
 <img src="public/logo.jpg" alt='weather app logo' width="100%"/>
-You could just use some HTML in your Markdown:
 
 <img src="public/favicon.jpg" alt='weather app logo' width="20"/>
 'Weather app' is a weather app _clever name isn't :,)_ baked using
