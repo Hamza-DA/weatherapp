@@ -82,7 +82,7 @@ export default function Search() {
               <p className='text-2xl mr-2'>{e[0].current.weather[0].main}</p>
               <img
                 className='w-8 h-8'
-                src={`http://openweathermap.org/img/wn/${e[0].current.weather[0].icon}.png`}
+                src={`https://openweathermap.org/img/wn/${e[0].current.weather[0].icon}.png`}
               />
             </div>
             <span className='text-base opacity-50 font-normal'>{e[2]}</span>

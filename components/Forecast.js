@@ -46,7 +46,7 @@ export const DailyForecast = ({ arr }) => {
                 {e.weather[0].main}
               </p>
               <img
-                src={`http://openweathermap.org/img/wn/${e.weather[0].icon}.png`}
+                src={`https://openweathermap.org/img/wn/${e.weather[0].icon}.png`}
                 alt='image'
                 className='w-8 h-auto'
               />
