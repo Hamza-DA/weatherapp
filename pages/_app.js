@@ -17,7 +17,9 @@ function MyApp({ Component, pageProps }) {
           rel='stylesheet'
         />
       </Head>
-      <Component {...pageProps} />
+      <main className='max-w-lg mx-auto'>
+        <Component {...pageProps} />
+      </main>
     </>
   );
 }

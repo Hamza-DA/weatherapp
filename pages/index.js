@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import NavBar from '../components/NavBar';
-import { ArrowUpIcon } from '@heroicons/react/outline';
+import { ArrowUpIcon, RefreshIcon } from '@heroicons/react/outline';
 import { CurrentWeather } from '../components/CurrentWeather';
 import { UnixDate } from '../components/ConvertTool';
 import { MinMax } from '../components/MinMax';
@@ -9,6 +9,7 @@ import { HourlyForecast, DailyForecast } from '../components/Forecast';
 import Loader from '../components/Loader';
 export default function Home() {
   const [Res, setRes] = useState(null);
+  const [ErrorObj, setErrorObj] = useState(null);
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       (position) => {
@@ -17,11 +18,47 @@ export default function Home() {
           lon: position.coords.longitude,
         });
       },
-      ({ message }) => {
-        alert(message);
-      }
+      (err) => {
+        setErrorObj(err);
+      },
+      { timeout: 10000 }
     );
   }, []);
+  const Error = () => {
+    let error = '';
+    switch (ErrorObj.code) {
+      case 1:
+        error = 'Please make sure you allow GPS permission and try again.';
+        break;
+      case 2:
+        error =
+          'Position unavailable, try again or manually search for you city.';
+        break;
+      case 3:
+        error =
+          'Timeout, maybe the server took a long time to respond, please try again.';
+        break;
+
+      default:
+        break;
+    }
+    return (
+      <>
+        <div className='flex flex-col items-center text-white'>
+          <p className='font-medium text-xl ml-2 w-2/3 text-center mb-6'>
+            {error}
+          </p>
+          <button
+            className='flex items-center bg-white bg-opacity-10 px-3 py-2 rounded-md'
+            onClick={() => window.location.reload()}
+          >
+            <p className='mr-2'>Refresh</p>
+            <RefreshIcon className='h-6 w-6 stroke-current' />
+          </button>
+        </div>
+      </>
+    );
+  };
   const getRes = ({ lat, lon }) => {
     axios
       .get(
@@ -90,6 +127,7 @@ export default function Home() {
       {Res !== null ? (
         <>
           <NavBar />
+
           <div className=' text-white'>
             <main className='relative flex-col flex items-center'>
               <div className='mt-4 flex flex-col items-center'>
@@ -113,8 +151,8 @@ export default function Home() {
         </>
       ) : (
         <>
-          <main className='relative w-screen h-screen flex items-center justify-center'>
-            <Loader />
+          <main className='relative w-full h-screen flex items-center justify-center'>
+            {ErrorObj == null ? <Loader /> : <Error />}
           </main>
         </>
       )}

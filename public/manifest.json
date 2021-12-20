@@ -1,0 +1,43 @@
+{
+  "short_name": "Weather App",
+  "name": "weather weather tell me if I will need an umbrella?",
+  "icons": [
+    {
+      "src": "/icons/icon512svg.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512"
+    },
+    {
+      "src": "/icons/icon192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/icons/icon512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#28468F",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#28468F",
+  "shortcuts": [
+    {
+      "name": "How's weather today?",
+      "short_name": "Today",
+      "description": "View weather information for today",
+      "url": "/",
+      "icons": [{ "src": "/icons/homeIcon.png", "sizes": "24x24" }]
+    },
+    {
+      "name": "How's weather in the moon?",
+      "short_name": "Search",
+      "description": "View weather information for other cities",
+      "url": "/search",
+      "icons": [{ "src": "/icons/searchIcon.png", "sizes": "24x24" }]
+    }
+  ],
+  "description": "Weather forecast information app"
+}

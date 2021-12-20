@@ -68,7 +68,7 @@ export default function Search() {
   };
 
   const RenderRes = () => {
-    return onCallRes.map((e, i) => (
+    return onCallRes?.reverse().map((e, i) => (
       <div
         key={i}
         className='bg-white bg-opacity-10 rounded-2xl py-3 px-5 mb-4'
